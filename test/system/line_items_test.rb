@@ -10,18 +10,6 @@ class LineItemsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Line Items"
   end
 
-  test "creating a Line item" do
-    visit line_items_url
-    click_on "New Line Item"
-
-    fill_in "Cart", with: @line_item.cart_id
-    fill_in "Product", with: @line_item.product_id
-    click_on "Create Line item"
-
-    assert_text "Line item was successfully created"
-    click_on "Back"
-  end
-
   test "updating a Line item" do
     visit line_items_url
     click_on "Edit", match: :first
@@ -31,7 +19,7 @@ class LineItemsTest < ApplicationSystemTestCase
     click_on "Update Line item"
 
     assert_text "Line item was successfully updated"
-    click_on "Back"
+    assert_text "Your Pragmatic Cart"
   end
 
   test "destroying a Line item" do
@@ -41,5 +29,6 @@ class LineItemsTest < ApplicationSystemTestCase
     end
 
     assert_text "Line item was successfully destroyed"
+    assert_text "Your Pragmatic Cart"
   end
 end
