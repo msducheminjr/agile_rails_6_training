@@ -15,8 +15,7 @@ class StoreCatalogTest < ApplicationSystemTestCase
     visit '/'
     #TODO make this better
     find(:xpath, '/html/body/section/main/ul/li[1]/div/form/input[1]').click
-    assert_selector '#notice', text: "Line item was successfully created."
-    assert_selector "h2", text: "Your Pragmatic Cart"
+    assert_selector "h2", text: "Your Cart"
     assert_text "#{Product.order(:title).first.title}"
   end
 end

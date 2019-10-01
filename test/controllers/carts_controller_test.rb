@@ -28,6 +28,12 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should redirect to index if cart not found" do
+    get cart_url('wibble')
+    assert_equal 'Invalid cart', flash[:notice]
+    assert_redirected_to store_index_url
+  end
+
   test "should get edit" do
     get edit_cart_url(@cart)
     assert_response :success
@@ -39,10 +45,14 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy cart" do
+    post line_items_url, params: {product_id: products(:ruby).id}
+    @cart = Cart.find(session[:cart_id])
+
     assert_difference('Cart.count', -1) do
       delete cart_url(@cart)
     end
 
-    assert_redirected_to carts_url
+    assert_equal 'Your cart is currently empty', flash[:notice]
+    assert_redirected_to store_index_url
   end
 end
