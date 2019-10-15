@@ -28,9 +28,23 @@ class CartsTest < ApplicationSystemTestCase
     assert_text "Cart was successfully updated"
   end
 
-  test "destroying a Cart" do
+  test "destroying a Cart from carts page" do
     visit store_index_url
+
     find(:xpath, '/html/body/section/main/ul/li[1]/div/form/input[1]').click
+
+    page.accept_confirm do
+      within('main') do
+        click_on "Empty cart"
+      end
+    end
+
+    assert_text 'Your cart is currently empty'
+    assert_text 'Your Pragmatic Catalog'
+  end
+
+  test "destroying a Cart from store page" do
+    visit store_index_url
 
     page.accept_confirm do
       click_on "Empty cart"
