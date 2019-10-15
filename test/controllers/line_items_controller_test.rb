@@ -27,6 +27,16 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'td', '$49.50'
   end
 
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do
+      post line_items_url, params: { product_id: products(:ruby).id }, xhr: true
+    end
+    assert_match /<h2>Your Cart<\\\/h2>/, @response.body
+    assert_match /<td>Programming Ruby 1\.9<\\\/td>/, @response.body
+    assert_match /<td class=\\"price\\">\$49\.50<\\\/td>/, @response.body
+    assert_match /<tr class=\\"line-item-highlight/, @response.body
+  end
+
   test "should show line_item" do
     get line_item_url(@line_item)
     assert_response :success
