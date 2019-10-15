@@ -45,6 +45,9 @@ class CartsTest < ApplicationSystemTestCase
   test "destroying a Cart from store page" do
     visit store_index_url
 
+    # add an item to the cart because it does not display on store_url if empty
+    add_first_item_to_cart
+
     page.accept_confirm do
       click_on "Empty cart"
     end

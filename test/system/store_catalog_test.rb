@@ -13,8 +13,7 @@ class StoreCatalogTest < ApplicationSystemTestCase
 
   test "adding an item to the cart" do
     visit '/'
-    #TODO make this better
-    find(:xpath, '/html/body/section/main/ul/li[1]/div/form/input[1]').click
+    add_first_item_to_cart
     assert_selector "h2", text: "Your Cart"
     assert_text "#{Product.order(:title).first.title}"
     assert_selector "tr.line-item-highlight td", text: "#{Product.order(:title).first.title}"
