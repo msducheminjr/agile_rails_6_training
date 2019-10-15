@@ -29,9 +29,8 @@ class CartsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Cart from carts page" do
-    visit store_index_url
 
-    find(:xpath, '/html/body/section/main/ul/li[1]/div/form/input[1]').click
+    visit cart_url(@cart)
 
     page.accept_confirm do
       within('main') do
