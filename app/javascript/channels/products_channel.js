@@ -10,11 +10,10 @@ consumer.subscriptions.create("ProductsChannel", {
   },
 
   received(data) {
-    // REFACTOR: Will have bad effects if store class is used anywhere else
-    let storeElements = document.getElementsByClassName('store');
-    if (storeElements && storeElements.length > 0) {
-      storeElements[0].innerHTML = data.html;
+    // REFACTOR: NOT ELEGANT. BASING ON STORE CLASS AND MAIN[0] FRAGILE
+    let mainElement = document.getElementsByTagName("main")[0];
+    if (mainElement.className == 'store') {
+      mainElement.innerHTML = data.html;
     }
-    //document.getElementsByTagName("main")[0].innerHTML = data.html;
   }
 });
