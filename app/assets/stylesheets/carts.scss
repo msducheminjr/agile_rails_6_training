@@ -19,14 +19,14 @@
     text-align: right;
   }
   tfoot {
-    th, td.price {
+    th, th.price {
       font-weight: bold;
       padding-top: 1em;
     }
     th {
       text-align: right;
     }
-    td.price {
+    th.price {
       border-top: solid thin;
     }
   }
