@@ -10,10 +10,9 @@ consumer.subscriptions.create("ProductsChannel", {
   },
 
   received(data) {
-    // REFACTOR: NOT ELEGANT. BASING ON STORE CLASS AND MAIN[0] FRAGILE
-    let mainElement = document.getElementsByTagName("main")[0];
-    if (mainElement.className == 'store') {
-      mainElement.innerHTML = data.html;
+    const storeElement = document.querySelector("main.store");
+    if (storeElement) {
+      storeElement.innerHTML = data.html;
     }
   }
 });
