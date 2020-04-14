@@ -9,3 +9,7 @@ two:
   product: two
   cart: two
   quantity: 2
+
+daves_item:
+  product: ruby
+  order: one
