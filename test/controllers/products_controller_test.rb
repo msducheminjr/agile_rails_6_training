@@ -29,6 +29,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get who_bought via atom" do
+    get who_bought_product_url(@product, format: :atom)
+    assert_response :success
+    assert_equal 'application/atom+xml; charset=utf-8', @response.content_type
+  end
+
   test "should get edit" do
     get edit_product_url(@product)
     assert_response :success
