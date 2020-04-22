@@ -26,7 +26,7 @@ class OrdersTest < ApplicationSystemTestCase
     fill_in "Address", with: @order.address
     fill_in "Email", with: @order.email
     fill_in "Name", with: @order.name
-    select @order.pay_type, from: "Pay type"
+    select 'Credit card', from: "Pay type"
     click_on "Place Order"
 
     assert_text "Thank you for your order."

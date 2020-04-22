@@ -15,5 +15,8 @@ module Depot
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # filter out credit card numbers so they don't get logged
+    config.filter_parameters += [:credit_card_number]
   end
 end
