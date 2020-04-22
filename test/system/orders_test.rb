@@ -18,7 +18,7 @@ class OrdersTest < ApplicationSystemTestCase
     assert_text "Your cart is empty"
   end
 
-  test "creating a Order" do
+  test "placing an order and selecting from dynamic dropdowns" do
     visit store_index_url
     add_first_item_to_cart
     click_on "Checkout"
@@ -26,7 +26,33 @@ class OrdersTest < ApplicationSystemTestCase
     fill_in "Address", with: @order.address
     fill_in "Email", with: @order.email
     fill_in "Name", with: @order.name
+
+    assert_no_selector "#order_routing_number"
+    assert_no_selector "#order_account_number"
+    select 'Check', from: "Pay type"
+
+    assert_selector "#order_routing_number"
+    assert_selector "#order_account_number"
+    fill_in 'Routing #', with: '123456789'
+    fill_in 'Account #', with: '000987654321'
+
+    assert_no_selector "#order_po_number"
+
+    select "Purchase order", from: "Pay type"
+    assert_selector "#order_po_number"
+    assert_no_selector "#order_routing_number"
+    assert_no_selector "#order_account_number"
+
+    fill_in 'PO #', with: '433f3dae109'
+
+    assert_no_selector "#order_credit_card_number"
+    assert_no_selector "#order_expiration_date"
+
     select 'Credit card', from: "Pay type"
+    assert_no_selector "#order_po_number"
+    fill_in 'CC #', with: '4444444444444444'
+    fill_in 'Expiry', with: '08/17'
+
     click_on "Place Order"
 
     assert_text "Thank you for your order."
@@ -34,6 +60,7 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "updating a Order" do
+    skip
     visit orders_url
     click_on "Edit", match: :first
 
