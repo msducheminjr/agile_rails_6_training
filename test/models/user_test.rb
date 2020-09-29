@@ -11,4 +11,12 @@ class UserTest < ActiveSupport::TestCase
     assert dupe.invalid?
     assert_equal ["has already been taken"], dupe.errors[:name]
   end
+
+  test 'cannot destroy last user' do
+    failed_delete = assert_raises User::Error do
+      User.destroy_all
+    end
+
+    assert_equal "Can't delete last user", failed_delete.message
+  end
 end
