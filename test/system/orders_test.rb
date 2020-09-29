@@ -1,6 +1,7 @@
 require "application_system_test_case"
 
 class OrdersTest < ApplicationSystemTestCase
+  include ActiveJob::TestHelper
   setup do
     @order = orders(:daves)
   end
@@ -19,6 +20,9 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "placing an order and selecting from dynamic dropdowns" do
+    LineItem.delete_all
+    Order.delete_all
+
     visit store_index_url
     add_first_item_to_cart
     click_on "Checkout"
@@ -53,10 +57,31 @@ class OrdersTest < ApplicationSystemTestCase
     fill_in 'CC #', with: '4444444444444444'
     fill_in 'Expiry', with: '08/17'
 
-    click_on "Place Order"
+    perform_enqueued_jobs do
+      click_on "Place Order"
+    end
 
     assert_text "Thank you for your order."
     assert_text "Your Pragmatic Catalog"
+    orders = Order.all
+    assert_equal 1, orders.size
+    order = orders.first
+    orders = Order.all
+    assert_equal 1, orders.size
+
+    order = orders.first
+
+    assert_equal "Dave Thomas", order.name
+    assert_equal "123 Fake Street", order.address
+    assert_equal "dave@wendys.example.com", order.email
+    assert_equal "Credit card", order.pay_type
+    assert_equal 1, order.line_items.size
+
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ['dave@wendys.example.com'],                 mail.to
+    assert_equal 'Stateless Code <statelesscode@example.com>',       mail[:from].value
+    assert_equal 'Pragmatic Store Order Confirmation', mail.subject
+
   end
 
   test "updating a Order" do

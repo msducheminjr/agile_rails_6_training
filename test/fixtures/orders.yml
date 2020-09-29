@@ -2,7 +2,7 @@
 
 daves:
   name: Dave Thomas
-  address: MyText
+  address: 123 Fake Street
   email: dave@wendys.example.com
   pay_type: Check
 
