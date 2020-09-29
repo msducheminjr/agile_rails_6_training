@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    @user = users(:one)
+    @user = users(:merry)
   end
 
   test "visiting the index" do
@@ -14,12 +14,14 @@ class UsersTest < ApplicationSystemTestCase
     visit users_url
     click_on "New User"
 
-    fill_in "Name", with: @user.name
+    username = 'newuser'
+
+    fill_in "Name", with: username
     fill_in "Password", with: 'secret'
-    fill_in "Password confirmation", with: 'secret'
+    fill_in "Confirm", with: 'secret'
     click_on "Create User"
 
-    assert_text "User was successfully created"
+    assert_text "User #{username} was successfully created"
     click_on "Back"
   end
 
@@ -28,11 +30,11 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @user.name
-    fill_in "Password", with: 'secret'
-    fill_in "Password confirmation", with: 'secret'
+    fill_in "Password", with: 'moresecret'
+    fill_in "Confirm", with: 'moresecret'
     click_on "Update User"
 
-    assert_text "User was successfully updated"
+    assert_text "User #{@user.name} was successfully updated"
     click_on "Back"
   end
 

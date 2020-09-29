@@ -17,6 +17,6 @@ module Depot
     # the framework and any gems in your application.
 
     # filter out credit card numbers so they don't get logged
-    config.filter_parameters += [:credit_card_number]
+    config.filter_parameters += [:credit_card_number, :password, :password_confirmation]
   end
 end
