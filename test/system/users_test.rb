@@ -39,6 +39,8 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "destroying a User" do
+    # log in as Pippin because Merry will be destroyed
+    login_as users(:pippin)
     visit users_url
     page.accept_confirm do
       click_on "Destroy", match: :first
