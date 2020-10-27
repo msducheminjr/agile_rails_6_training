@@ -29,28 +29,28 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+pirate:
   number:
     currency:
       format:
-        unit: "$"
+        unit: "US pieces o'8"
         precision: 2
         separator: "."
         delimiter: ","
-        format: "%u%n"
+        format: "%n&nbsp;%u"
   layouts:
     application:
-      title: "The Pragmatic Bookshelf"
-      home: "Home"
-      questions: "Questions"
-      news: "News"
-      contact: "Contact"
+      title: "Ye Pragmatic Book Booty"
+      home: "Captain's Cabin"
+      questions: "Yer Questions"
+      news: "Scuttlebutt"
+      contact: "Hollar"
   store:
     index:
-      title_html: "Your Pragmatic Catalog"
-      add_html: "Add to Cart"
+      title_html: "Yer Pragmatic Catalog"
+      add_html: "Add to Booty"
   carts:
     cart:
-        title: "Your Cart"
-        empty: "Empty cart"
-        checkout: "Checkout"
+        title: "Yer Cart"
+        empty: "Scuttle Cart"
+        checkout: "Checkout! Arrr!"
