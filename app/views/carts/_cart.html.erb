@@ -14,7 +14,7 @@
   </table>
 
   <div class="actions">
-    <%= button_to t('.empty'), cart, method: :delete, data: {confirm: 'Are you sure?'} %>
-    <%= button_to t('.checkout'), new_order_path, method: :get, class: "checkout" %>
+    <%= button_to t('.empty'), cart, method: :delete, params: {locale: I18n.locale}, data: {confirm: t('.empty_confirm')} %>
+    <%= button_to t('.checkout'), new_order_path(locale: I18n.locale), method: :get, class: "checkout" %>
   </div>
 </article>

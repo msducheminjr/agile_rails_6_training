@@ -36,3 +36,7 @@ yarn-debug.log*
 
 # Ignore editor specific files
 .vscode/
+
+# Ignore I18n Javascripts
+public/javascripts/i18n.js
+public/javascripts/translations.js

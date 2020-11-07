@@ -18,5 +18,8 @@ module Depot
 
     # filter out credit card numbers so they don't get logged
     config.filter_parameters += [:credit_card_number, :password, :password_confirmation]
+
+    # add configuration for I18n::JS::Middleware
+    config.middleware.use I18n::JS::Middleware
   end
 end

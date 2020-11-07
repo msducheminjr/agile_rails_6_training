@@ -3,6 +3,11 @@ require 'test_helper'
 class OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @order = orders(:daves)
+    I18n.locale = I18n.default_locale
+  end
+
+  teardown do
+    I18n.locale = I18n.default_locale
   end
 
   test "should get index" do
@@ -29,8 +34,26 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
       post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
     end
 
-    assert_equal 'Thank you for your order.', flash[:notice]
-    assert_redirected_to store_index_url
+    assert_equal 'Thank you for your order', flash[:notice]
+    assert_redirected_to store_index_url(locale: 'en')
+  end
+
+  test "should create order in Spanish" do
+    assert_difference('Order.count') do
+      post orders_url, params: { locale: 'es', order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+    end
+
+    assert_equal 'Gracias por su pedido', flash[:notice]
+    assert_redirected_to store_index_url(locale: 'es')
+  end
+
+  test "should create order in Pirate" do
+    assert_difference('Order.count') do
+      post orders_url, params: { locale: 'pirate', order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+    end
+
+    assert_equal 'Thank ye for yer orrrder, matey', flash[:notice]
+    assert_redirected_to store_index_url(locale: 'pirate')
   end
 
   test "should show order" do

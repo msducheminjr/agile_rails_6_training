@@ -7,6 +7,10 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
   </head>
   <body>
     <header>
@@ -21,7 +25,7 @@
           </div>
         <% end %>
         <ul>
-          <li><a href="/"><%= t('.home') %></a></li>
+          <li><%= link_to t('.home'), store_index_path(locale: I18n.locale) %></a></li>
           <li><a href="/questions"><%= t('.questions') %></a></li>
           <li><a href="/news"><%= t('.news') %></a></li>
           <li><a href="/contact"><%= t('.contact') %></a></li>

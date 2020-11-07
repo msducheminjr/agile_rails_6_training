@@ -30,6 +30,27 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 pirate:
+  thanks: "Thank ye for yer orrrder, matey"
+  cart_empty: "Arrrr, yer cart be scuttled.."
+  activerecord:
+    errors:
+      messages:
+        inclusion: "ain't included in the list, matey"
+        blank: "can't be blank, lest ye get a cutlass to the chest"
+      models:
+        order: "orrrder"
+      attributes:
+        order:
+          address: "Address or Ship"
+          name: "Yer name"
+          email: "Yer email"
+          pay_type: "Yer payment method"
+  errors:
+    template:
+      body: "There be problems with the fields below, matey:"
+      header:
+        one: "1 error sunk yer chance to save this %{model}"
+        other: "%{count} errors sunk yer chance to save this %{model}"
   number:
     currency:
       format:
@@ -53,4 +74,27 @@ pirate:
     cart:
         title: "Yer Cart"
         empty: "Scuttle Cart"
+        empty_confirm: "Arrre you sure, matey?"
         checkout: "Checkout! Arrr!"
+  orders:
+    new:
+      legend: "Enter Yer Details"
+    form:
+      name: "Name"
+      address_html: "Address or Ship"
+      email: "E-mail"
+      pay_type: "Pay with"
+      pay_prompt_html: "Pick yer payment method"
+      submit: "Get Loot"
+      pay_types:
+        check: "Check"
+        credit_card: "Credit Card"
+        purchase_order: "IOU"
+      check_pay_type:
+        routing_number: "Routing #"
+        account_number: "Account #"
+      credit_card_pay_type:
+        cc_number: "CC #"
+        expiration_date: "Date it goes to Davy Jones' locker"
+      purchase_order_pay_type:
+        po_number: "IOU #"

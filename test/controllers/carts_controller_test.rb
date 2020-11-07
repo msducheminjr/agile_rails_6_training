@@ -53,6 +53,6 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_equal 'Your cart is currently empty', flash[:notice]
-    assert_redirected_to store_index_url
+    assert_redirected_to store_index_url(locale: I18n.default_locale)
   end
 end
