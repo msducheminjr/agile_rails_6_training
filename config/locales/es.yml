@@ -66,6 +66,7 @@ es:
       questions: "Preguntas"
       news: "Noticias"
       contact: "Contacto"
+      locale_submit: 'Realizar'
   store:
     index:
       title_html: "Su Cat&aacute;logo de Pragmatic"

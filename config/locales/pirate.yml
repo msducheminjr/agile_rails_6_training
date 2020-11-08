@@ -66,6 +66,7 @@ pirate:
       questions: "Yer Questions"
       news: "Scuttlebutt"
       contact: "Hollar"
+      locale_submit: 'Submit matey'
   store:
     index:
       title_html: "Yer Pragmatic Catalog"

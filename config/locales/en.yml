@@ -53,6 +53,7 @@ en:
       questions: "Questions"
       news: "News"
       contact: "Contact"
+      locale_submit: 'Submit'
   store:
     index:
       title_html: "Your Pragmatic Catalog"

@@ -31,7 +31,10 @@ header.main {
     display: none;
   }
 }
-
+.locale {
+  float: right;
+  margin: 1em;
+}
 .notice, #notice {
   background: #ffb;
   border-radius: 0.5em;
