@@ -1,0 +1,4 @@
+daves_response:
+  record: daves (SupportRequest)
+  name: response
+  body: <p>We are <i>so sorry</i>! We will have your correct order shipped overnight</p>
