@@ -1,9 +1,13 @@
 class SupportMailbox < ApplicationMailbox
   def process
-    puts 'START SuppportMailbox#process:'
-    puts "From   : #{mail.from_address}"
-    puts "Subject: #{mail.subject}"
-    puts "Body   : #{mail.body}"
-    puts 'END SuppportMailbox#process:'
+    email_address = mail.from_address.to_s
+    recent_order = Order.where(email: email_address).order('created_at desc').first
+
+    SupportRequest.create!(
+      email:    email_address,
+      subject:  mail.subject,
+      body:     mail.body.to_s,
+      order:    recent_order
+    )
   end
 end

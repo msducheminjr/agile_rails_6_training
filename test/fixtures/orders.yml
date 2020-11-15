@@ -6,8 +6,12 @@ daves:
   email: dave@wendys.example.com
   pay_type: Check
 
-two:
-  name: MyString
-  address: MyText
-  email: MyString
-  pay_type: 1
+frodos_new: &FRODO
+  name: Frodo Baggins
+  address: Bag End Shire
+  email: frodo@shire.example.com
+  pay_type: Purchase order
+
+frodos_old:
+  <<: *FRODO
+  created_at: <%= 2.days.ago %>

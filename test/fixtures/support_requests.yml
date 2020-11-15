@@ -1,0 +1,18 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+ghost_pirates:
+  email: jack.sparrow@example.com
+  subject: Ghost Pirates
+  body: |
+    Hey mate,
+    I know I said to send the order to the Black Pearl, but, thing is, it got captured by ghost pirates. Any chance you can re-route it?
+
+daves:
+  email: dave@wendys.example.com
+  subject: Got Python book by mistake
+  body: I ordered the Ruby on Rails book but got a Python book by mistake
+  order: daves

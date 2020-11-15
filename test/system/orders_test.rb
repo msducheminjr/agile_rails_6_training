@@ -25,8 +25,7 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "placing an order and selecting from dynamic dropdowns" do
-    LineItem.delete_all
-    Order.delete_all
+    Order.destroy_all
 
     visit store_index_url
     add_first_item_to_cart
@@ -90,8 +89,7 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "placing an order and selecting from dynamic dropdowns in Pirate" do
-    LineItem.delete_all
-    Order.delete_all
+    Order.destroy_all
 
     visit store_index_url(locale: 'pirate')
     add_first_item_to_cart
