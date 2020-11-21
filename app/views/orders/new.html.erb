@@ -1,6 +1,6 @@
 <section class="depot_form">
     <h1><%= t('.legend') %></h1>
-    <%= render 'form', order: @order %>
+    <%= render 'form', order: @order, from_view: 'new' %>
 </section>
 
 <%= javascript_pack_tag("pay_type") %>

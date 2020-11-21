@@ -3,6 +3,11 @@ require "application_system_test_case"
 class CartsTest < ApplicationSystemTestCase
   setup do
     @cart = carts(:one)
+    I18n.locale = I18n.default_locale
+  end
+
+  teardown do
+    I18n.locale = I18n.default_locale
   end
 
   test "visiting the index" do
@@ -30,7 +35,7 @@ class CartsTest < ApplicationSystemTestCase
 
   test "destroying a Cart from carts page" do
 
-    visit cart_url(@cart)
+    visit cart_url(@cart, locale: I18n.locale)
 
     page.accept_confirm do
       within('main') do

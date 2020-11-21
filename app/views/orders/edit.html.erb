@@ -1,6 +1,4 @@
 <section class="depot_form">
-    <h1>Please Update Your Order Details</h1>
-    <%= render 'form', order: @order %>
+    <h1><%= t('.legend') %></h1>
+    <%= render 'form', order: @order, from_view: 'edit' %>
 </section>
-
-<%= javascript_pack_tag("pay_type") %>

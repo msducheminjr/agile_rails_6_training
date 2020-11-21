@@ -151,21 +151,20 @@ class OrdersTest < ApplicationSystemTestCase
     assert_equal 'Pragmatic Store Order Confirmation', mail.subject
   end
 
-  test "updating a Order" do
-    skip
-    visit orders_url
+  test "updating an Order" do
+    visit orders_url(locale: I18n.locale)
     click_on "Edit", match: :first
 
     fill_in "Address", with: @order.address
     fill_in "Email", with: @order.email
     fill_in "Name", with: @order.name
-    select "Purchase order", from: "Pay type"
-    click_on "Place Order"
+    select "Purchase order", from: "Pay with"
+    click_on "Update Order"
 
     assert_text "Order was successfully updated"
   end
 
-  test "destroying a Order" do
+  test "destroying an Order" do
     visit orders_url
     page.accept_confirm do
       click_on "Destroy", match: :first

@@ -27,9 +27,15 @@
     <%= form.text_field :email, size: 40 %>
   </div>
 
-  <div id="pay-type-component"></div>
+  <%= content_tag :div, id: "pay-type-component", data: order.to_json do %>
+  <% end %>
+
+  <% if from_view == 'edit' %>
+    <%= form.label :pay_type, t('.pay_type') %>
+    <%= form.select :pay_type, options_for_select(Order.pay_types.keys, order.pay_type)  %>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit t('.submit'), locale: I18n.locale %>
+    <%= form.submit t(from_view == 'new' ? '.submit' : '.update'), locale: I18n.locale %>
   </div>
 <% end %>

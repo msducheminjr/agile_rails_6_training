@@ -37,14 +37,14 @@ pirate:
       messages:
         inclusion: "ain't included in the list, matey"
         blank: "can't be blank, lest ye get a cutlass to the chest"
-      models:
-        order: "orrrder"
-      attributes:
-        order:
-          address: "Address or Ship"
-          name: "Yer name"
-          email: "Yer email"
-          pay_type: "Yer payment method"
+    models:
+      order: "orrrder"
+    attributes:
+      order:
+        address: "Address or Ship"
+        name: "Yer name"
+        email: "Yer email"
+        pay_type: "Yer payment method"
   errors:
     template:
       body: "There be problems with the fields below, matey:"
@@ -78,8 +78,12 @@ pirate:
         empty_confirm: "Arrre you sure, matey?"
         checkout: "Checkout! Arrr!"
   orders:
+    index:
+      destroy_confirm: "Arrre you sure, matey?"
     new:
       legend: "Enter Yer Details"
+    edit:
+      legend: "Update Yer Details"
     form:
       name: "Name"
       address_html: "Address or Ship"
@@ -87,6 +91,7 @@ pirate:
       pay_type: "Pay with"
       pay_prompt_html: "Pick yer payment method"
       submit: "Get Loot"
+      update: "Update Yer Order"
       pay_types:
         check: "Check"
         credit_card: "Credit Card"

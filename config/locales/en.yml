@@ -38,6 +38,19 @@ en:
       header:
         one: "1 error prohibited this %{model} from being saved"
         other: "%{count} errors prohibited this %{model} from being saved"
+  activerecord:
+    errors:
+      messages:
+        inclusion: "is not included in the list"
+        blank: "can't be blank"
+    models:
+      order: "order"
+    attributes:
+      order:
+        address: "Address"
+        name: "Name"
+        email: "Email"
+        pay_type: "Pay type"
   number:
     currency:
       format:
@@ -65,8 +78,14 @@ en:
         empty_confirm: "Are you sure?"
         checkout: "Checkout"
   orders:
+    order: 'order'
+    orders: 'orders'
+    index:
+      destroy_confirm: "Are you sure?"
     new:
       legend: "Please Enter Your Details"
+    edit:
+      legend: "Please Update Your Details"
     form:
       name: "Name"
       address_html: "Address"
@@ -74,6 +93,7 @@ en:
       pay_type: "Pay with"
       pay_prompt_html: "Select a payment method"
       submit: "Place Order"
+      update: "Update Order"
       pay_types:
         check: "Check"
         credit_card: "Credit card"

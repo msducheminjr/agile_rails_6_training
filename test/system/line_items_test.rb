@@ -22,7 +22,6 @@ class LineItemsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Line item" do
-    skip "Behavior not important yet"
     visit line_item_url(@line_item)
     page.accept_confirm do
       click_on "Destroy", match: :first
